@@ -45,7 +45,9 @@ group :development do
 end
 
 ######### add custom shiz below #########
-#had to fubar rails version
+
+
+###first###
 
 # add bootstrappyness gem, bundle then run "rails generate bootstrap:install static"
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -58,3 +60,6 @@ gem 'devise'
   
   #run "rails generate devise user" and "rake db:migrate"
   # then rails generate devise:views
+  
+###first###
+
