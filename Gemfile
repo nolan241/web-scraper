@@ -47,19 +47,21 @@ end
 ######### add custom shiz below #########
 
 
-###first###
+###basic setup###
 
-# add bootstrappyness gem, bundle then run "rails generate bootstrap:install static"
+# add bootstrappyness gem
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
+  #bundle then run "rails generate bootstrap:install static"
 
-# add simple form gem, bundle then run "rails generate simple_form:install --bootstrap"
+# add simple form gem
 gem 'simple_form'
+  #bundle then run "rails generate simple_form:install --bootstrap"
 
-# oh joy add devise, bundle then run "rails generate devise:install"
+# oh joy add devise
 gem 'devise'
-  
+  #bundle then run "rails generate devise:install"
   #run "rails generate devise user" and "rake db:migrate"
   # then rails generate devise:views
   
-###first###
+###basic setup###
 
