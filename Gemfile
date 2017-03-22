@@ -65,3 +65,6 @@ gem 'devise'
   
 ###basic setup###
 
+#add validation for correct url format in form submission 
+#https://github.com/perfectline/validates_url
+gem 'validate_url'
