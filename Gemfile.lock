@@ -194,6 +194,7 @@ DEPENDENCIES
   devise
   jbuilder (~> 2.0)
   jquery-rails
+  nokogiri
   rails
   sass-rails
   sdoc (~> 0.4.0)

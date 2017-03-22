@@ -47,7 +47,7 @@ end
 ######### add custom shiz below #########
 
 
-###basic setup###
+###start basic setup###
 
 # add bootstrappyness gem
 gem 'twitter-bootstrap-rails', :git => 'git://github.com/seyhunak/twitter-bootstrap-rails.git'
@@ -63,8 +63,16 @@ gem 'devise'
   #run "rails generate devise user" and "rake db:migrate"
   # then rails generate devise:views
   
-###basic setup###
+###end basic setup###
+
 
 #add validation for correct url format in form submission 
 #https://github.com/perfectline/validates_url
 gem 'validate_url'
+
+#nokogiri for HTML and XML parser
+  # read more here http://ruby.bastardsbook.com/chapters/html-parsing/
+  # gem https://github.com/sparklemotion/nokogiri
+gem 'nokogiri'
+  #create noko.rb in initializers
+
