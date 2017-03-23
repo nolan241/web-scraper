@@ -6,4 +6,5 @@ class User < ApplicationRecord
   
   #associate the current user to movies       
   has_many :movies, dependent: :destroy
+  has_many :vehicles, dependent: :destroy
 end

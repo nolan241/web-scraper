@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :vehicles
   resources :movies
   devise_for :users
   get 'pages/home'

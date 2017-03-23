@@ -1,0 +1,16 @@
+<%= simple_form_for(@vehicle) do |f| %>
+  <%= f.error_notification %>
+
+  <div class="form-inputs">
+    <%= f.input :title %>
+    <%= f.input :price %>
+    <%= f.input :image_url %>
+    <%= f.input :overview %>
+    <%= f.input :miles %>
+    <%= f.input :user_id %>
+  </div>
+
+  <div class="form-actions">
+    <%= f.button :submit %>
+  </div>
+<% end %>
