@@ -1,4 +1,5 @@
-	attr_accessor :title, :price, :image_url, :overview, :miles 
+class Scrape
+	attr_accessor :title, :price, :image_url, :miles, :overview
 
 	def scrape_new_vehicle
 		begin
@@ -7,13 +8,32 @@
 			self.title = doc.at("//h1[@itemprop = 'name']").text
 			self.price = doc.at("//h4[@itemprop = 'priceCurrency']").text
 			self.image_url = doc.at_css('#vdp.pag-vdp .swiper-slide a img')['src']
-			self.overview = doc.at('div#vehicle-overview-text').text
 			self.miles = doc.at_css('//#vdp-vehicle-overview .table').text
+			
+    			o = doc.at('div#vehicle-overview-text').text
+    			if ! o.valid_encoding?
+    				o = o.encode("UTF-16be", :invalid=>:replace, :replace=>"?").encode('UTF-8')
+    			end
+			self.overview = o
+	
 			return true
+		
 		rescue Exception => e
 			self.failure = "Something went wrong with the scrape"
 		end
 	end
+	
+	def save_vehicle
+	    vehicle = Vehicle.new(
+	        title: self.title,
+	        price: self.price,
+	        image_url: self.image_url,
+	        miles: self.miles,
+	        overview: self.overview
+	        )
+	    vehicle.save
+	end
+	
 end
 
 
