@@ -19,7 +19,7 @@
       <tr>
         <td><%= vehicle.title %></td>
         <td><%= vehicle.price %></td>
-        <td><%= vehicle.image_url %></td>
+        <td><%= image_tag vehicle.image_url, class: "thumbnail" %></td>
         <td><%= vehicle.overview %></td>
         <td><%= vehicle.miles %></td>
         <td><%= link_to 'Show', vehicle %></td>
