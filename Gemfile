@@ -62,7 +62,12 @@ gem 'devise'
   #bundle then run "rails generate devise:install"
   #run "rails generate devise user" and "rake db:migrate"
   # then rails generate devise:views
-  
+
+group :development do
+  #rails chrome plugin
+  gem 'meta_request'
+end
+
 ###end basic setup###
 
 

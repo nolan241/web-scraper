@@ -1,9 +1,9 @@
 class Scrape
-	attr_accessor :title, :price, :image_url, :miles, :overview
+	attr_accessor :title, :price, :image_url, :miles, :overview, :failure
 
-	def scrape_new_vehicle
+	def scrape_new_vehicle(url)
 		begin
-			doc = Nokogiri::HTML(open("http://nb.ebizautos.com/detail-2012-land_rover-range_rover-4wd_4dr_hse-used-10697046.html"))
+			doc = Nokogiri::HTML(open(url))
 			doc.css('script').remove 
 			self.title = doc.at("//h1[@itemprop = 'name']").text
 			self.price = doc.at("//h4[@itemprop = 'priceCurrency']").text
@@ -21,17 +21,6 @@ class Scrape
 		rescue Exception => e
 			self.failure = "Something went wrong with the scrape"
 		end
-	end
-	
-	def save_vehicle
-	    vehicle = Vehicle.new(
-	        title: self.title,
-	        price: self.price,
-	        image_url: self.image_url,
-	        miles: self.miles,
-	        overview: self.overview
-	        )
-	    vehicle.save
 	end
 	
 end

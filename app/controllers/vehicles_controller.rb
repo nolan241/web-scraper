@@ -1,6 +1,7 @@
 class VehiclesController < ApplicationController
   before_action :set_vehicle, only: [:show, :edit, :update, :destroy]
   before_action :authenticate_user!
+  before_action :scrape, only: [:new]
 
   # GET /vehicles
   # GET /vehicles.json
@@ -15,9 +16,22 @@ class VehiclesController < ApplicationController
 
   # GET /vehicles/new
   def new
-    @vehicle = Vehicle.new
-  end
-
+    if @vehicle_data.failure == nil
+      @vehicle = Vehicle.new(
+	        title: @vehicle_data.title,
+	        price: @vehicle_data.price,
+	        image_url: @vehicle_data.image_url,
+	        miles: @vehicle_data.miles,
+	        overview: @vehicle_data.overview        
+        )
+    else
+      @vehicle = Vehicle.new
+      if params[:search]
+        @failure = @vehicle_data.failure
+      end
+    end
+	end    
+    
   # GET /vehicles/1/edit
   def edit
   end
@@ -72,4 +86,10 @@ class VehiclesController < ApplicationController
     def vehicle_params
       params.require(:vehicle).permit(:title, :price, :image_url, :overview, :miles, :user_id)
     end
+    
+    def scrape
+      s = Scrape.new
+      s.scrape_new_vehicle(params[:search].to_s)
+      @vehicle_data = s
+    end    
 end
